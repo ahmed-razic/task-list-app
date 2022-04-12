@@ -85,7 +85,18 @@ function clearTasks() {
 }
 
 //Filter tasks
-function filterTasks() {}
+function filterTasks(e) {
+  const filterText = e.target.value.toLowerCase();
+
+  document.querySelectorAll('.collection-item').forEach(function (item) {
+    const itemText = item.childNodes[0].textContent.toLowerCase();
+    if (itemText.indexOf(filterText) !== -1) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
 
 //Save to Locale Storage
 function saveToLocalStorage(input) {
